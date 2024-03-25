@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <string.h>
+#include <stdbool.h>
 
 // void main(){
 //     int num = 0xFFFF00FF;
@@ -35,8 +36,11 @@ void decToBinary(int n)
     printf("\n");
 }
 
-void put_in_third_byte(int number) // 1 задание
+void put_in_third_byte() // 1 задание
 {
+    int number = 0;
+    printf("Введите число: ");
+    scanf("%d", &number);
     char *p_number = &number;
     int second_number = 0;
     printf("Введите второе число: ");
@@ -76,35 +80,53 @@ void point_array() // 3 задание
     printf("\n");
 }
 
-void point_string()
+bool string_comparison(char *p_string, char *p_substring)
 {
-    char *string;
-    char *substring;
+    bool flag = false;
+    while (*p_string == *p_substring)
+    {
+        p_string++;
+        p_substring++;
+    }
+    if (*p_substring == '\0')
+    {
+        flag = true;
+    }
+    return flag;
+}
+
+void point_string() // 4 задание
+{
+    int pointer = 0;
+    bool flag = false;
+    static char string[100];
+    static char substring[100];
     printf("Введите строку: ");
     scanf("%s", string);
     printf("Введите подстроку: ");
     scanf("%s", substring);
-    while (*string != '\0')
+    char *p_string = &string;
+    char *p_substring = &substring;
+    while (*p_string != '\0')
     {
-        if (*string == *substring)
+        if (*p_string == *p_substring)
         {
-            while ((*substring != '\0') && (*string == *substring))
-            {
-                string++;
-                substring++;
-            }
-            
+            flag = string_comparison(p_string, p_substring);
         }
-        
+        if (flag == true)
+        {
+            pointer = p_string;
+            break;
+        }
+        p_string++;
     }
+    printf("%p\n", pointer);
 }
 
 int main()
 {
-    // int N = 0;
-    // printf("Введите число: ");
-    // scanf("%d", &N);
-    // put_in_third_byte(N);
+    // put_in_third_byte();
     // code();
-    point_array();
+    // point_array();
+    point_string();
 }

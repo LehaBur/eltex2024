@@ -121,6 +121,19 @@ struct abonent delete_abonent(struct abonent *p_users)
     }
 }
 
+struct abonent test_initialization(struct abonent *p_users)
+{
+    p_users[0] = create_abonent("Bob", "Bab", "978465");
+    p_users[1] = create_abonent("Boba", "Bab", "48646");
+    p_users[2] = create_abonent("Biba", "Bup", "845654");
+    p_users[3] = create_abonent("ABob", "Bup", "874562");
+    p_users[4] = create_abonent("Aboba", "Babah", "785285");
+    p_users[5] = create_abonent("Abiba", "Babah", "328745");
+    p_users[6] = create_abonent("Babob", "Babu", "985215");
+    p_users[7] = create_abonent("Bibob", "Babu", "6841269");
+    p_users[8] = create_abonent("Bibab", "Babu", "85452");
+}
+
 int main()
 {
     printf("\033[0d\033[2J");
@@ -131,69 +144,38 @@ int main()
     bool exteed = true;
     int menu = 0;
 
-    users[0] = create_abonent("Bob", "Baa", "48646");
-    users[1] = create_abonent("Boba", "Baa", "48646");
-    users[2] = create_abonent("Biba", "Baa", "48646");
-    users[3] = create_abonent("ABob", "Baa", "48646");
-    users[4] = create_abonent("Aboba", "Baa", "48646");
-    users[5] = create_abonent("Abiba", "Baa", "48646");
-    users[6] = create_abonent("Babob", "Baa", "48646");
-    users[7] = create_abonent("Bibob", "Baa", "48646");
-    users[8] = create_abonent("Bibab", "Baa", "48646");
+    test_initialization(users);
 
     while (exteed)
     {
-        printf("1) Добавить абонента\n");
-        printf("2) Удалить абонента\n");
-        printf("3) Поиск абонентов по имени\n");
-        printf("4) Вывод всех записей\n");
-        printf("5) Выход\n");
+        printf("1) Добавить абонента\n2) Удалить абонента\n3) Поиск абонентов по имени\n4) Вывод всех записей\n5) Выход\n");
         scanf("%d", &menu);
         switch (menu)
         {
         case 1:
-            printf("\033[0d\033[2J");
-            printf("---ДОБАВЛЕНИЕ АБОНЕНТА---\n");
+            printf("\033[0d\033[2J---ДОБАВЛЕНИЕ АБОНЕНТА---\n");
             add_new_abonent(users);
             break;
         case 2:
-            printf("\033[0d\033[2J");
-            printf("---УДАЛЕНИЕ АБОНЕНТА---\n");
+            printf("\033[0d\033[2J---УДАЛЕНИЕ АБОНЕНТА---\n");
             delete_abonent(users);
             break;
         case 3:
-            printf("\033[0d\033[2J");
-            printf("---ПОИСК АБОНЕНТОВ---\n");
+            printf("\033[0d\033[2J---ПОИСК АБОНЕНТОВ---\n");
             search_abonent(users);
             break;
         case 4:
-            printf("\033[0d\033[2J");
-            printf("---ВЫВОД ВСЕХ АБОНЕНТОВ---\n");
+            printf("\033[0d\033[2J---ВЫВОД ВСЕХ АБОНЕНТОВ---\n");
             show_abonents(users);
             break;
         case 5:
-            printf("\033[0d\033[2J");
-            printf("---ВЫХОД---\n");
+            printf("\033[0d\033[2J---ВЫХОД---\n");
             exteed = false;
             break;
         default:
-            printf("\033[0d\033[2J");
-            printf("Нет такого пунка в меню!\n");
+            printf("\033[0d\033[2JНет такого пунка в меню!\n");
             break;
         }
     }
 
-    // users[0] = create_abonent("Bob", "Baa", "48646");
-    // users[1] = create_abonent("Boba", "Baa", "48646");
-    // users[2] = create_abonent("Biba", "Baa", "48646");
-
-    // for (int i = 0; i < 4; i++)
-    // {
-    //     add_new_abonent(users);
-    // }
-
-    // search_abonent(users);
-    // show_abonents(users);
-    // delete_abonent(users);
-    // show_abonents(users);
 }
